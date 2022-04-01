@@ -19,8 +19,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\OneToOne(mappedBy: 'category', targetEntity: Product::class, cascade: ['persist', 'remove'])]
-    private $product;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $slug;
 
     public function getId(): ?int
     {
@@ -51,19 +52,15 @@ class Category
         return $this;
     }
 
-    public function getProduct(): ?Product
+
+    public function getSlug(): ?string
     {
-        return $this->product;
+        return $this->slug;
     }
 
-    public function setProduct(Product $product): self
+    public function setSlug(string $slug): self
     {
-        // set the owning side of the relation if necessary
-        if ($product->getCategory() !== $this) {
-            $product->setCategory($this);
-        }
-
-        $this->product = $product;
+        $this->slug = $slug;
 
         return $this;
     }

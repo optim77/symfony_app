@@ -29,9 +29,27 @@ class Product
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
-    #[ORM\OneToOne(inversedBy: 'product', targetEntity: Category::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(referencedColumnName: 'id',nullable: false)]
     private $category;
+
+    #[ORM\Column(type: 'datetime', nullable: 'false')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'datetime', nullable: 'true')]
+    private $updateAt;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image2;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image3;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image4;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image5;
 
     public function getId(): ?int
     {
@@ -106,6 +124,87 @@ class Product
     public function setCategory(Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updatedTimestamps(): void
+    {
+        $dateTimeNow = new \DateTime('now');
+
+        $this->setUpdatedAt($dateTimeNow);
+
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt($dateTimeNow);
+        }
+    }
+    public function getCreatedAt() :?\DateTime{
+        return $this->createdAt();
+    }
+    public function setCreatedAt(\DateTime $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    public function getUpdatedAt() :?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(?string $image2): self
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    public function getImage3(): ?string
+    {
+        return $this->image3;
+    }
+
+    public function setImage3(?string $image3): self
+    {
+        $this->image3 = $image3;
+
+        return $this;
+    }
+
+    public function getImage4(): ?string
+    {
+        return $this->image4;
+    }
+
+    public function setImage4(?string $image4): self
+    {
+        $this->image4 = $image4;
+
+        return $this;
+    }
+
+    public function getImage5(): ?string
+    {
+        return $this->image5;
+    }
+
+    public function setImage5(?string $image5): self
+    {
+        $this->image5 = $image5;
 
         return $this;
     }
