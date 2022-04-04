@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block title %} Sing Up {% endblock %}
 {% block body %}
-    <div class="text-center p-5">
+    <div class="form-group">
+        <div class="text-center p-5 form-group sign-up-form">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary mt-3 p-3">Sign up</button>
+            {{ form_end(form) }}
 
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input class="btn btn-primary" type="button" value="Sign Up">
-        {{ form_end(form) }}
-
+        </div>
     </div>
+
 
 {% endblock %}
