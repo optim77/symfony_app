@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}  {% endblock %}
+{% block body %}
+    <p class="text-white text-center">{{ items|length }} items in this category</p>
+    <div class="container">
+        <div class="row">
+            {% for item in items %}
+                {% if item.stock > 0 %}
+                    <div class="col-3 category-box text-center item-box">
+                        <a class="text-white" href="{{ path('product', {'id': item.id}) }}">
+                            <img src="{{ item.image }}" width="250px" alt="category-image">
+                            <p>{{ item.name }}</p>
+                            <p>{{ item.price }} $</p>
+                        </a>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

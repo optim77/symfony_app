@@ -1,4 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block title %}Home{% endblock %}
 {% block body %}
+    <div class="main-search">
+        <form action="">
+            <input type="text" placeholder="Find what you want...">
+        </form>
+    </div>
+    <hr>
+    <div class="container">
+        <p class="text-center display-4 text-white mb-5">Categories</p>
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-3 category-box text-center">
+                    <a class="text-white" href="{{ path('category', {'id': category.id}) }}">
+                        <img src="{{ category.image }}" alt="category-image">
+                        <p>{{ category.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
 {% endblock %}

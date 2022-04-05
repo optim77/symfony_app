@@ -2,4 +2,34 @@
 {% block title %}{% endblock %}
 {% block body %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img class="p-3" src="{{ item.image }}" width="400px" alt="main-image">
+            </div>
+            <div class="col-6 text-white text-left">
+                <h1>{{ item.name }}</h1>
+                <p>{{ item.descriptions }}</p>
+                <h3>{{ item.price }} $</h3>
+                <p>Stock {{ item.stock }}</p>
+                <button class="btn btn-success">Buy</button>
+                <hr>
+            </div>
+
+            {% if item.image2 != NULL %}
+                <img src="{{ item.image2 }}" alt="product-image">
+            {% endif %}
+            {% if item.image3 != NULL %}
+                <img src="{{ item.image3 }}" alt="product-image">
+            {% endif %}
+            {% if item.image4 != NULL %}
+                <img src="{{ item.image4 }}" alt="product-image">
+            {% endif %}
+            {% if item.image5 != NULL %}
+                <img src="{{ item.image5 }}" alt="product-image">
+            {% endif %}
+
+        </div>
+    </div>
+
 {% endblock %}
