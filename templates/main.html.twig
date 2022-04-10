@@ -19,6 +19,19 @@
                 </div>
             {% endfor %}
         </div>
+        <hr class="text-white p-1">
+        <p class="text-left display-5 text-white mb-5">New products</p>
+        <div class="row">
+            {% for new in new_products %}
+                <div class="col-3 category-box text-center">
+                    <a class="text-white" href="{{ path('product', {'id': new.id}) }}">
+                        <img src="{{ new.image }}" alt="category-image">
+                        <p>{{ new.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 

@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Timestampable;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -33,10 +36,10 @@ class Product
     #[ORM\JoinColumn(referencedColumnName: 'id',nullable: false)]
     private $category;
 
-    #[ORM\Column(type: 'datetime', nullable: 'false')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $createdAt;
 
-    #[ORM\Column(type: 'datetime', nullable: 'true')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $updateAt;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

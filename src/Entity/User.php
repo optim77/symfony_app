@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,9 +26,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $phone;
-
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $name;
 
@@ -34,10 +33,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $surname;
 
     #[ORM\Column(type: 'string', length: 500, nullable: true)]
-    private $adress;
+    private $address;
 
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    private $createdAt;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $phone;
 
     public function getId(): ?int
     {
@@ -73,7 +72,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
@@ -109,18 +108,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getPhone(): ?int
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?int $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -145,26 +132,26 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(?string $adress): self
+    public function setAddress(?string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getPhone(): ?int
     {
-        return $this->createdAt;
+        return $this->phone;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    public function setPhone(?int $phone): self
     {
-        $this->createdAt = $createdAt;
+        $this->phone = $phone;
 
         return $this;
     }
