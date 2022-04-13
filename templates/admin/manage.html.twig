@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Delete Item{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for item in items %}
+                <div class="col-12 edit-item">
+                    <div class="row p-3">
+                        <div class="col-4">
+                            <img src="{{ asset('uploads/') }}{{ item.image }}" width="200" alt="image">
+                        </div>
+                        <div class="col-4 text-left text-white">
+                            <a href="{{ path('product', {'id': item.id}) }}"><p>{{ item.name }}</p></a>
+                        </div>
+                        <div class="col-4">
+                            <a class="btn btn-primary" href="{{ path('app_admin_edit_item', {'id': item.id}) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ path('app_admin_delete_item', {'id': item.id}) }}">Delete</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

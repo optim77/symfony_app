@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <img class="p-3" src="{{ item.image }}" width="400px" alt="main-image">
+                <img class="p-3" src="{{ asset('/uploads/') }}{{ item.image }}" width="400px" alt="main-image">
             </div>
             <div class="col-6 text-white text-left">
                 <h1>{{ item.name }}</h1>
@@ -17,16 +17,16 @@
             </div>
 
             {% if item.image2 != NULL %}
-                <img src="{{ item.image2 }}" alt="product-image">
+                <img src="{{ asset('/uploads/') }}{{ item.image2 }}" alt="product-image">
             {% endif %}
             {% if item.image3 != NULL %}
-                <img src="{{ item.image3 }}" alt="product-image">
+                <img src="{{ asset('/uploads/') }}{{ item.image3 }}" alt="product-image">
             {% endif %}
             {% if item.image4 != NULL %}
-                <img src="{{ item.image4 }}" alt="product-image">
+                <img src="{{ asset('/uploads/') }}{{ item.image4 }}" alt="product-image">
             {% endif %}
             {% if item.image5 != NULL %}
-                <img src="{{ item.image5 }}" alt="product-image">
+                <img src="{{ asset('/uploads/') }}{{ item.image5 }}" alt="product-image">
             {% endif %}
 
         </div>

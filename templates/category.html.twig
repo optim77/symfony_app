@@ -8,7 +8,7 @@
                 {% if item.stock > 0 %}
                     <div class="col-3 category-box text-center item-box">
                         <a class="text-white" href="{{ path('product', {'id': item.id}) }}">
-                            <img src="{{ item.image }}" width="250px" alt="category-image">
+                            <img src="{{ asset('/uploads/') }}{{ item.image }}" width="250px" alt="category-image">
                             <p>{{ item.name }}</p>
                             <p>{{ item.price }} $</p>
                         </a>

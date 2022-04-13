@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row text-center mt-4 text-white">
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="">
+                    Orders
+                    <p>Here you can check the orders that have been placed in your store</p>
+                </a>
+
+            </div>
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="{{ path('app_admin_add_new') }}">
+                    Add new item
+                    <p>Add new products to your store with their properties </p>
+                </a>
+            </div>
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="{{ path('app_admin_manage') }}">
+                    Manage items
+                    <p>Get rid of products that are no longer for sale</p>
+                </a>
+            </div>
+
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="">
+                    Users administrations
+                    <p>Manage your user base</p>
+                </a>
+            </div>
+
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="">
+                    Custom email sender
+                    <p>Customize the emails sent to your customers </p>
+                </a>
+            </div>
+
+            <div class="col-4 admin-buttons">
+                <a class="text-white" href="">
+                    Support
+                    <p>Contact the support responsible for your application</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

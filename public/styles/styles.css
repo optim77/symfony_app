@@ -108,4 +108,28 @@ body {
     width: 80%;
     border-radius: 5px;
 }
+.admin-buttons{
+    border: #DDDDDD 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.admin-buttons a{
+    text-decoration: none;
+}
+.admin-buttons a:hover{
+    padding: 15px;
+}
+.add-new-form{
+    width: 80%;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+}
+.edit-item{
+    border: #DDDDDD 1px;
+    border-radius: 5px;
+}
+.edit-item a{
+    text-decoration: none;
+}
 

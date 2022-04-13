@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Add New Item{% endblock %}
+{% block body %}
+
+<div class="add-new-form">
+    <form class="text-white" method="post" enctype="multipart/form-data">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+    </form>
+</div>
+
+
+
+{% endblock %}

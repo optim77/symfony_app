@@ -25,7 +25,7 @@
             {% for new in new_products %}
                 <div class="col-3 category-box text-center">
                     <a class="text-white" href="{{ path('product', {'id': new.id}) }}">
-                        <img src="{{ new.image }}" alt="category-image">
+                        <img src="{{ asset('/uploads/') }}{{ new.image }}" alt="category-image">
                         <p>{{ new.name }}</p>
                     </a>
                 </div>
